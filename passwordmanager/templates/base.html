@@ -3,17 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>პარ2ლი</title>
+    <!-- css -->
+    <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='reset.css') }}">
+    <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='style.css') }}">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div>
-        <header>
-
-        </header>
+        <nav class="navbar">
+            <div class="logo">
+                <h4>პარ<span style="color: red;">2</span>ლი</h4>
+            </div>
+            <ul class="nav-ul">
+                <li class="li-l"><a href="{{ url_for('home') }}">მთავარი</a></li>
+                <li class="li-l"><a href="#">ჩვენს შესახებ</a></li>
+                <li class="li-l"><a href="#">კონტაქტი</a></li>
+                {% if current_user.is_authenticated %}
+                    <li class="li-l"><a href="{{ url_for('account') }}">ჩემი ინფორმაცია</a></li>
+                    <li class="li-logout"><a href="{{ url_for('logout') }}">გამოსვლა</a></li>
+                {% else %}
+                    <li class="li-l"><a href="{{ url_for('login') }}">შესვლა</a></li>
+                    <li class="li-r"><a href="{{ url_for('register') }}">შემოგვიერთდი</a></li>
+                {% endif %}   
+            </ul>
+            <div class="navbar-burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+        <!-- <div class="flash-fail">
+            <p>raga rafafsa fassf asf</p>
+        </div> -->
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <div class="alert-{{ category }}">
+                    <div class="{{ category }}">
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -23,5 +51,7 @@
         {% block content %}
         {% endblock %}
     </div>
+    <!-- js -->
+    <script src="{{url_for('static', filename='main.js')}}"></script>
 </body>
 </html>
