@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>home page</h2>
+    <div class="home-pic-cont">
+        <img class="home-pic" src="{{url_for('static', filename='pictures/home-main.jpg')}}" alt="laptop pictures">
+        <div class="home-pic-text">
+            <h1>უსაფრთხო პაროლის მენეჯერი</h1>
+            <p>შექმენი მაქსიმალურად დაცული პაროლი და აკონტრელი ის ჩვენი მეშვეობით</p>
+            <a href="{{ url_for('register') }}">შემოგვიერთდი დღესვე</a>
+        </div>
+    </div>
+    
 {% endblock %}
