@@ -1,84 +1,72 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div>
+<div class="reg-cont-wrap">
+    <div class="reg-pic-cont">
+        <img class="reg-pic" src="{{url_for('static', filename='pictures/register.svg')}}" alt="laptop pictures">
+    </div>
+    <div class="reg-cont">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
+            <h1 class="reg-title">დარეგისტრირდი</h1>
             <div class="reg-form-cont">
-            <div class="form-group">
-                {{ form.first_name.label(class="reg-form-label") }}
-
+            <div class="reg-form-div">
                 {% if form.first_name.errors %}
-                    {{ form.first_name(class="reg-form-invalid") }}
-                    <div class="invalid-feedback">
+                    {{ form.first_name(class="reg-form-invalid", placeholder="სახელი") }}
                         {% for error in form.first_name.errors %}
-                            <span>{{ error }}</span>
+                            <span class="reg-form-error">{{ error }}</span>
                         {% endfor %}
-                    </div>
                 {% else %}
-                    {{ form.first_name(class="reg-form") }}
+                    {{ form.first_name(class="reg-form", placeholder="სახელი") }}
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.last_name.label(class="reg-form-label") }}
-
+            <div class="reg-form-div">
                 {% if form.last_name.errors %}
-                    {{ form.last_name(class="reg-form-invalid") }}
-                    <div class="invalid-feedback">
+                    {{ form.last_name(class="reg-form-invalid", placeholder="გვარი") }}
                         {% for error in form.last_name.errors %}
-                            <span>{{ error }}</span>
+                            <span class="reg-form-error">{{ error }}</span>
                         {% endfor %}
-                    </div>
                 {% else %}
-                    {{ form.last_name(class="reg-form") }}
+                    {{ form.last_name(class="reg-form", placeholder="გვარი") }}
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.email.label(class="reg-form-label") }}
-
+            <div class="reg-form-div">
                 {% if form.email.errors %}
-                    {{ form.email(class="reg-form-invalid") }}
-                    <div class="invalid-feedback">
+                    {{ form.email(class="reg-form-invalid", placeholder="ელ-ფოსტა") }}
                         {% for error in form.email.errors %}
-                            <span>{{ error }}</span>
+                            <span class="reg-form-error">{{ error }}</span>
                         {% endfor %}
-                    </div>
                 {% else %}
-                    {{ form.email(class="reg-form") }}
+                    {{ form.email(class="reg-form", placeholder="ელ-ფოსტა") }}
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.password.label(class="reg-form-label") }}
-
+            <div class="reg-form-div"> 
                 {% if form.password.errors %}
-                    {{ form.password(class="reg-form-invalid") }}
-                    <div class="invalid-feedback">
+                    {{ form.password(class="reg-form-invalid", placeholder="პაროლი") }}
                         {% for error in form.password.errors %}
-                            <span>{{ error }}</span>
+                            <span class="reg-form-error">{{ error }}</span>
                         {% endfor %}
-                    </div>
                 {% else %}
-                    {{ form.password(class="reg-form") }}
+                    {{ form.password(class="reg-form", placeholder="პაროლი") }}
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.confirm_password.label(class="reg-form-label") }}
-
+            <div class="reg-form-div">
                 {% if form.confirm_password.errors %}
-                    {{ form.confirm_password(class="reg-form-invalid") }}
-                    <div class="invalid-feedback">
+                    {{ form.confirm_password(class="reg-form-invalid", placeholder="გაიმეორეთ პაროლი") }}
                         {% for error in form.confirm_password.errors %}
-                            <span>{{ error }}</span>
+                            <span class="reg-form-error">{{ error }}</span>
                         {% endfor %}
-                    </div>
                 {% else %}
-                    {{ form.confirm_password(class="reg-form") }}
+                    {{ form.confirm_password(class="reg-form", placeholder="გაიმეორეთ პაროლი") }}
                 {% endif %}
             </div>
+            {{ form.submit(class=("reg-sub-btn")) }}
             </div>
-            <div>
-                {{ form.submit(class=("sub-btn")) }}
+            <div class="reg-login-div">
+                <small class="text-muted">
+                    უკვე დარეგისტრირდი ? <a class="reg-login" href="{{ url_for('login') }}">შესვლა</a>
+                </small>
             </div>
-            
         </form>
     </div>
+</div>
 {% endblock %}
