@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div class="home-pic-cont">
-        <img class="home-pic" src="{{url_for('static', filename='pictures/home-main.jpg')}}" alt="laptop pictures">
+    <div class="home-cont">   
         <div class="home-pic-text">
-            <h1>უსაფრთხო პაროლის მენეჯერი</h1>
-            <p>შექმენი მაქსიმალურად დაცული პაროლი და აკონტრელი ის ჩვენი მეშვეობით</p>
+            <h1>უსაფრთხო <span style="color: #f33535;">პაროლის</span> მენეჯერი</h1>
+            <p>შექმენი მაქსიმალურად დაცული პაროლი და აკონტროლეთ ის ჩვენი მეშვეობით</p>
             <a href="{{ url_for('register') }}">შემოგვიერთდი დღესვე</a>
+            <div class="home-pic-4-cont">
+                <img class="home-pic-4" src="{{url_for('static', filename='pictures/home4.svg')}}" alt="laptop pictures">
+            </div>
+        </div>
+        <div class="home-pic-3-cont"> 
+            <img class="home-pic-3" src="{{url_for('static', filename='pictures/home3.svg')}}" alt="laptop pictures">
         </div>
     </div>
     
