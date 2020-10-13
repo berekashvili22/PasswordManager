@@ -545,6 +545,20 @@ body {
     flex-direction: column;
 }
 
+.gen-password {
+    display: flex;
+    position: absolute;
+    bottom: 15%;
+    right: 50%;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.267);
+}
+
 
 
 /* modal add password */
@@ -560,8 +574,8 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 2;
-    /* visibility: hidden; */
-    /* opacity: 0; */
+    visibility: hidden;
+    opacity: 0;
     transition: visibility 0s, opacity 0.5s;
 }
 
@@ -600,4 +614,43 @@ body {
 .modal-close:hover {
     color: red;
 }  
-  
+
+/* add password modal content */
+
+.add-password-title {
+    font-size: 26px;
+    font-weight: bold;
+    color: #3b3b3b;
+    padding-bottom: 30px;
+}
+
+
+.add-password-cont {
+    display: flex;
+    height: 65vh;
+}
+
+.add-password-form-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-password-form-div {
+
+}
+
+.add-password-form {
+    width: 500px;
+    height: 50px;
+    margin-bottom: 30px;
+    border: solid 2px #c3cbcb;
+    border-radius: 5px;
+    text-indent: 12px;
+    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+    outline: none;
+    margin-top: 5px;
+}
+
+
+
