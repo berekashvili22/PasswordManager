@@ -34,7 +34,7 @@ class LoginForm(FlaskForm):
     email = StringField('ელ-ფოსტა',
                                 validators=[DataRequired(message='ველის შევსება სავალდებულოა'), Email()])
     password = PasswordField('პაროლი',
-                                validators=[DataRequired(message='ველის შევსება სავალდებულოა'),])
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
     remember = BooleanField('დამახსოვრება')
     submit = SubmitField('შესვლა')
 
@@ -42,3 +42,26 @@ class LoginForm(FlaskForm):
             def render_field(self, field, render_kw):
                 render_kw.setdefault('required', False)
                 return super().render_field(field, render_kw)
+
+
+class AddPassword(FlaskForm):
+    account_username = StringField('მომხარებლის სახელი',
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
+    account_email = StringField('ელ-ფოსტა',
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა'), Email()])
+    account_password = StringField('პაროლი',
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
+    account_site = StringField('საიტის/აპლიკაციის სახელი',
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
+    submit = SubmitField('დამატება')
+
+    class Meta:
+            def render_field(self, field, render_kw):
+                render_kw.setdefault('required', False)
+                return super().render_field(field, render_kw)
+
+
+class GeneratePassword(FlaskForm):
+    password_rng = IntegerField('ზომა')
+    submit = SubmitField('დააგენერირე')
+    
