@@ -1,8 +1,9 @@
 from flask import render_template, url_for, flash, redirect
 from passwordmanager import app, db, bcrypt
-from passwordmanager.forms import RegistrationForm, LoginForm
+from passwordmanager.forms import RegistrationForm, LoginForm, AddPassword, GeneratePassword
 from passwordmanager.models import User, Account
 from flask_login import login_user, current_user, logout_user, login_required
+import secrets
 
 
 
@@ -62,8 +63,19 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/account')
+@app.route('/account', methods=['POST', 'GET'])
 @login_required
 def account():
-    return render_template('account.html')
+    form = AddPassword()
+    return render_template('account.html', form=form)
+
+
+@app.route('/generate_password', methods=['POST', 'GET'])
+@login_required
+def generate_password():
+    form = GeneratePassword()
+
+    password = secrets.token_urlsafe(form.password_rng.data)
+
+    return render_template('generate.html', password=password, form=form)
 
