@@ -1,5 +1,6 @@
 body {
     margin-top: 7vh;
+    background-color: #f9fbfd;
 }
 
 
@@ -145,37 +146,54 @@ body {
     width: 100%;
     letter-spacing: 2px;
     padding: 5px;
+    transition: 0.3ms;
+}
+
+.flash-dissapear {
+    display: none;
 }
 
 /* home page */
+.home-pic-4-cont {
+    width: 50%;
+}
 
-.home-pic-cont {
-    width: 100%;
+.home-pic-4 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
     
 }
-.home-pic {
-    max-width: 100%;
-    filter: blur(1px);
-    position: relative;
+
+
+
+.home-pic-3-cont {
+    margin-top: 5%;
+    width: 40%;
 }
 
-.home-pic-text {
-    width: 800px;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    width: 70%;
-    background-color: rgba(0, 0, 0, 0.300);
-    padding: 10px;
+.home-pic-3 {
+    max-width: 100%;
+}
 
+.home-cont {
+  display: flex;
+  justify-content: space-evenly;
+  height: 93vh;
+}
+
+
+.home-pic-text {
+    margin-top: 50px;
+    color: #3b3b3b;
+    width: 40%;
 }
 
 .home-pic-text h1 {
-    font-size: 42px;
+    font-size: 50px;
     letter-spacing: 2px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     font-weight: bold;
     text-align: center;
     padding: 10px;
@@ -186,7 +204,7 @@ body {
     text-align: center;
     font-size: 18px;
     letter-spacing: 1px;
-    margin-bottom: 30px;
+    margin-bottom: 80px;
 }
 
 .home-pic-text a {
@@ -194,16 +212,16 @@ body {
     background-color: #d22d27;
     display: flex;
     justify-content: center;
-    width: 400px;
-    font-size: 30px;
+    width: 70%;
+    font-size: 32px;
     letter-spacing: 1px;
-    padding: 10px;
+    padding: 12px;
     border-radius: 30px;
     margin: auto;
 }
 
 .home-pic-text a:hover {
-    background-color: #96201c;
+    background-color: #ad2723;
 }
 
 /* register */
@@ -451,3 +469,135 @@ body {
     padding-top: 100px;
 }
 
+/* account */
+
+.account-wrap {
+    width: 100%;
+    height: 93vh;
+    background-image: linear-gradient(to bottom right, #f9fbfd 50%, #d32d27 50%);
+    display: flex;
+}
+
+.user-info-cont {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 35%;
+    height: 100px;
+    margin-top: 100px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.096);
+}
+
+.user-name {
+    font-size: 36px;
+    font-weight: bold;
+    color: #3b3b3b;
+}
+
+.user-pic-cont {
+    width:12%;
+}
+
+.user-pic {
+    max-width: 100%;
+}
+
+.account-pic1-cont {
+    padding-top: 5%;
+    padding-left: 10px;
+    width: 40%;
+}
+
+.account-pic1 {
+    max-width: 100%;
+}
+
+.add-password-btn-div {
+    width: 50%;
+    margin-top: 20px;
+}
+
+.add-password-btn {
+    max-width: 100%;
+    outline: none;
+}
+
+.add-password-btn-title {
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 20px;
+    box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.137);
+    border-radius: 20px;
+    cursor: pointer;
+
+}
+
+.add-password-wrap {
+    height: 30%;
+    margin-top: 23%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+/* modal add password */
+
+.modal-bg {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    /* visibility: hidden; */
+    /* opacity: 0; */
+    transition: visibility 0s, opacity 0.5s;
+}
+
+.modal-bg-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal {
+    border-radius: 25px;
+    background-color: white;
+    width: 60%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+
+.modal button {
+    padding: 10px;
+    background-color: tomato;
+    cursor: pointer; 
+}
+  
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+  
+.modal-close:hover {
+    color: red;
+}  
+  
