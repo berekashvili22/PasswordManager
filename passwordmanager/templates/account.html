@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="account-wrap">
+        <div class="account-pic1-cont">
+            <img class="account-pic1" src="{{url_for('static', filename='pictures/account1.svg')}}" alt="laptop pictures">
+        </div>   
+        <div class="user-info-cont"> 
+            <p class="user-name">{{ current_user.first_name }} {{ current_user.last_name }}</p>
+        </div>
+        <div class="add-password-wrap">
+            <p class="add-password-btn-title">დაამატე ექაუნთი</p>
+            <div class="add-password-btn-div">
+                <input type="image" value="+" class="add-password-btn" src="{{url_for('static', filename='pictures/account2.svg')}}">
+            </div> 
+        </div>
+        <div class="gen-password">
+            <p>დააგენერირე პაროლი</p>
+        </div>
+        
+        <!-- modal add new password -->
+        <div class="modal-bg">
+            <div class="modal">
+                <span class="modal-close">X</span>
+                <div>
+                    <div class="add-password-cont">
+                        <form method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            <h1 class="add-password-title">შექმენი მაქსიმალურად დაცული პაროლი</h1>
+                            <div class="add-password-form-cont">
+                            <div class="add-password-form-div">
+                                {% if form.account_username.errors %}
+                                    {{ form.account_username(class="add-password-form-invalid", placeholder="ელ-ფოსტა") }}
+                                        {% for error in form.account_username.errors %}
+                                            <span class="add-password-form-error">{{ error }}</span>
+                                        {% endfor %}
+                                {% else %}
+                                    {{ form.account_username(class="add-password-form", placeholder="მომხმარებლის სახელი") }}
+                                {% endif %}
+                            </div>
+                            <div class="add-password-form-div"> 
+                                {% if form.account_email.errors %}
+                                    {{ form.account_email(class="add-account_email-form-invalid", placeholder="პაროლი") }}
+                                        {% for error in form.account_email.errors %}
+                                            <span class="add-account_email-form-error">{{ error }}</span>
+                                        {% endfor %}
+                                {% else %}
+                                    {{ form.account_email(class="add-password-form", placeholder="ელ-ფოსტა") }}
+                                {% endif %}
+                            </div>
+                            <div class="add-password-form-div"> 
+                                {% if form.account_password.errors %}
+                                    {{ form.account_password(class="add-account_password-form-invalid", placeholder="პაროლი") }}
+                                        {% for error in form.account_password.errors %}
+                                            <span class="add-account_password-form-error">{{ error }}</span>
+                                        {% endfor %}
+                                {% else %}
+                                    {{ form.account_password(class="add-password-form", placeholder="პაროლი") }}
+                                {% endif %}
+                            </div>
+                            <div class="add-password-form-div"> 
+                                {% if form.account_site.errors %}
+                                    {{ form.account_site(class="add-account_site-form-invalid", placeholder="პაროლი") }}
+                                        {% for error in form.account_site.errors %}
+                                            <span class="add-account_site-form-error">{{ error }}</span>
+                                        {% endfor %}
+                                {% else %}
+                                    {{ form.account_site(class="add-password-form", placeholder="საიტი/აპლიკაცია") }}
+                                {% endif %}
+                            </div>
+
+
+                            {{ form.submit(class=("login-sub-btn")) }}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <!-- end modal -->
+
+    </div>
+{% endblock %}
