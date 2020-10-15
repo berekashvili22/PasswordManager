@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect
 from passwordmanager import app, db, bcrypt
-from passwordmanager.forms import RegistrationForm, LoginForm, AddPassword, GeneratePassword
+from passwordmanager.forms import RegistrationForm, LoginForm, AddAccount, GeneratePassword
 from passwordmanager.models import User, Account
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets
@@ -66,8 +66,8 @@ def logout():
 @app.route('/account', methods=['POST', 'GET'])
 @login_required
 def account():
-    form = AddPassword()
-    return render_template('account.html', form=form)
+
+    return render_template('account.html')
 
 
 @app.route('/generate_password', methods=['POST', 'GET'])
@@ -78,4 +78,34 @@ def generate_password():
     password = secrets.token_urlsafe(form.password_rng.data)
 
     return render_template('generate.html', password=password, form=form)
+
+
+@app.route('/my_accounts', methods=['POST', 'GET'])
+@login_required
+def my_accounts():
+    
+   
+    return render_template('my_accounts.html')
+
+
+@app.route('/add_account', methods=['POST', 'GET'])
+@login_required
+def add_account():
+    form = AddAccount()
+    if form.validate_on_submit():
+        account = Account(
+            account_username = form.account_username.data,
+            account_email = form.account_email.data,
+            account_password = form.account_password.data,
+            account_site = form.account_site.data,
+            owner = current_user
+        )
+        db.session.add(account)
+        db.session.commit()
+
+        flash('ექაუნთი წარმატებით დაემატა !', 'flash-success')
+        return redirect(url_for('my_accounts'))
+
+   
+    return render_template('add_account.html', form=form)
 
