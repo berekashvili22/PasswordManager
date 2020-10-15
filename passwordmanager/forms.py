@@ -44,7 +44,7 @@ class LoginForm(FlaskForm):
                 return super().render_field(field, render_kw)
 
 
-class AddPassword(FlaskForm):
+class AddAccount(FlaskForm):
     account_username = StringField('მომხარებლის სახელი',
                                 validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
     account_email = StringField('ელ-ფოსტა',
