@@ -120,6 +120,7 @@ body {
     width: 100%;
     letter-spacing: 2px;
     padding: 5px;
+    position: absolute;
 }
 
 .flash-success {
@@ -133,6 +134,7 @@ body {
     width: 100%;
     letter-spacing: 2px;
     padding: 5px;
+    position: absolute;
 }
 
 .flash-fail {
@@ -147,6 +149,7 @@ body {
     letter-spacing: 2px;
     padding: 5px;
     transition: 0.3ms;
+    position: absolute;
 }
 
 .flash-dissapear {
@@ -287,7 +290,6 @@ body {
 .reg-form:focus {
     border: solid 2px rgb(91, 91, 255);
     box-shadow: inset 0 1px 3px 0 rgba(95, 87, 255, 0.392);
-
 }
 
 .reg-form::placeholder{
@@ -476,30 +478,39 @@ body {
     height: 93vh;
     background-image: linear-gradient(to bottom right, #f9fbfd 50%, #d32d27 50%);
     display: flex;
+    flex-direction: column;
+}
+
+.acc-top-cont {
+    display: flex;
+    flex-direction: row;
 }
 
 .user-info-cont {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     width: 35%;
-    height: 100px;
-    margin-top: 100px;
+    height: 90px;
+    margin-top: 5%;
     letter-spacing: 1px;
     text-transform: uppercase;
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.096);
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.250);
 }
 
 .user-name {
-    font-size: 36px;
+    font-size: 32px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
     color: #3b3b3b;
 }
 
-.user-pic-cont {
-    width:12%;
+.my-accounts {
+    color: #2c69ed;
+    font-weight: bold;
 }
 
 .user-pic {
@@ -508,7 +519,7 @@ body {
 
 .account-pic1-cont {
     padding-top: 5%;
-    padding-left: 10px;
+    padding-left: 5px;
     width: 40%;
 }
 
@@ -516,54 +527,77 @@ body {
     max-width: 100%;
 }
 
-.add-password-btn-div {
-    width: 50%;
-    margin-top: 20px;
+/* account navigation */
+
+.account-nav {
+    /* background: wheat; */
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    position: absolute;
+    bottom: 20%;
+    right: 5%;
 }
 
-.add-password-btn {
-    max-width: 100%;
+.acc-nav-link-div {
+    /* background: white; */
+    width: 48%;
+    justify-content: space-evenly;
+    display: flex;
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.250);
+    padding: 10px;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.acc-nav-link-div:hover {
+    box-shadow: 1px 10px 15px rgba(0, 0, 0, 0.300);
+
+}
+
+
+
+
+
+.acc-nav-link-title {
+    font-size: 24px;
+    color: white;
+}
+
+.acc-nav-btn {
+    border: 1px solid #333333;
+    border-radius: 30px;
     outline: none;
 }
 
-.add-password-btn-title {
-    color: white;
-    font-size: 32px;
+/* .account-nav button, input {
+   border: none;
+    border-radius: 15px;
+    font-size: 30px;
+    text-align: center;
     font-weight: bold;
-    padding: 20px;
-    box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.137);
-    border-radius: 20px;
+    color: white;
+    background: #27cc3d;
+    padding: 0 9px 0 9px;
     cursor: pointer;
+    outline: none;
+} */
 
-}
 
-.add-password-wrap {
-    height: 30%;
-    margin-top: 23%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
 
-.gen-password {
-    display: flex;
-    position: absolute;
-    bottom: 15%;
-    right: 50%;
-    font-size: 32px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    border-radius: 10px;
+.acc-nav-link-div a {
     color: white;
-    padding: 10px;
-    box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.267);
 }
 
 
 
-/* modal add password */
 
-.modal-bg {
+
+
+
+/* modal add account */
+
+/* .modal-bg {
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -587,8 +621,8 @@ body {
 .modal {
     border-radius: 25px;
     background-color: white;
-    width: 60%;
-    height: 70vh;
+    width: 90%;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -613,44 +647,288 @@ body {
   
 .modal-close:hover {
     color: red;
-}  
+} 
 
-/* add password modal content */
+.add-account-modal-cont {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    
+} */
 
-.add-password-title {
-    font-size: 26px;
-    font-weight: bold;
-    color: #3b3b3b;
-    padding-bottom: 30px;
+/* add account modal content */
+
+
+
+.add-account-pic {
+    width: 50%;
+    display: flex;
+}
+
+.modal-pic {
+    max-width: 90%;
+    padding-left: 20px;
+}
+
+.add-account-wrap {
+    display: flex;
+    width: 100%;
+    height: 93vh;
+}
+
+.add-account-cont {
+    display: flex;
+    width: 50%;
+    
 }
 
 
-.add-password-cont {
-    display: flex;
-    height: 65vh;
+.add-account-title {
+    font-size: 34px;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-.add-password-form-cont {
+.add-account-cont {
     display: flex;
-    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    /* background: wheat; */
+    justify-content: center;
     align-items: center;
 }
 
-.add-password-form-div {
+.add-acc-form-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 80vh;
+}
+
+.add-account-form-cont {
+    width: 90%;
+    height: 80%;
+    text-align: center;
+}
+
+.add-account-form-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    /* background-color: #2c69ed */
+}
+
+
+.add-account-form-div {
+    width: 70%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
 
 }
 
-.add-password-form {
-    width: 500px;
+.add-account-form {
+    width: 100%;
     height: 50px;
     margin-bottom: 30px;
     border: solid 2px #c3cbcb;
-    border-radius: 5px;
+    border-radius: 15px;
     text-indent: 12px;
     box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.15);
     outline: none;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
+.add-account-form-invalid {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    border: solid 2px #d54949;
+    border-radius: 15px;
+    text-indent: 12px;
+    box-shadow: inset 0 1px 2px 0 rgba(247, 50, 50, 0.192);
+    outline: none;
+    margin-top: 10px;
+}
+
+.add-account-form-error {
+    font-size: 12px;
+    color: #96201c;
+    display: flex;
+    padding-left: 5px;
+}
+
+.add-acc-sub-btn {
+    background-color: #d32d27;
+    color: white;
+    font-size: 24px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    letter-spacing: 3px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 50px;
+    outline: none;
+}
+
+.add-acc-sub-btn:hover {
+    background-color: #96201c;
+}
+
+.add-account-form:focus {
+    border: solid 2px rgb(91, 91, 255);
+    box-shadow: inset 0 1px 3px 0 rgba(95, 87, 255, 0.392);
+}
+
+.add-account-form::placeholder{
+    font-size: 16px;
+}
+
+/* generate password */
+
+.gen-cont-wrap {
+    display: flex;
+}
+
+.gen-cont {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 50vh;
+}
+
+.gen-form-cont {
+    width: 55%;
+    height: 25vh;
+    margin: auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-bottom: 30px;
+}
+
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #f35151;
+    cursor: pointer;
+  }
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #f35151;
+    cursor: pointer;
+  }
+
+.gen-sub-btn {
+    background-color: #ff4949;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 24px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.gen-sub-btn:hover {
+    background-color: #bd3636;
+}
+
+.gen-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3b3b3b;
+}
+
+.pass-input {
+    height: 50px;
+    font-size: 12px;
+    color: red;
+    border: 2px solid #333333;
+    border-radius: 10px;
+    outline: none;
+    padding: 1px;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 84%;
+}
+
+.copy-btn {
+    background: #10971bd2;
+    border: none;
+    outline: none;
+    width: 15%;
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    height: 50px;
+    padding: 15px 0px 15px 0px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background: #0a6612d2;
+}
+
+
+.pass-pic-div {
+    height: 60vh;
+    display: flex;
+    margin: auto;
+}
+
+.pass-pic {
+    max-height: 100%;
+    margin: auto;
+}
+
+.go-back {
+    position: absolute;
+    font-size: 70px;
+    left: 0px;
+    font-weight: bold;
+    color: #333333;
+    padding: 10px;
+}
+
+.go-back:hover {
+    color: red;
+}
 
 
