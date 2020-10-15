@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="login-cont-wrap">
-    <div class="login-cont">
+<div class="gen-cont-wrap">
+    <div class="gen-cont">
+        <a class="go-back" href="/account"><</a>
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <div class="login-form-cont">
-            <div class="login-form-div">
-                {% if form.password_rng.errors %}
-                    {{ form.password_rng(class="login-form-invalid", placeholder="ელ-ფოსტა") }}
-                        {% for error in form.password_rng.errors %}
-                            <span class="login-form-error">{{ error }}</span>
-                        {% endfor %}
-                {% else %}
-                    {{ form.password_rng(type="range", min="6", max="124", class="login-form", placeholder="ელ-ფოსტა") }}
-                {% endif %}
-            </div>
-            {{ form.submit(class=("login-sub-btn")) }}
+            <div class="gen-form-cont">
+                    <p class="gen-value">ზომა: <span id="demo"></span></p>
+                    {{ form.password_rng(type="range", min="6", max="124", value="62",class="slider", id="myRange") }}
+                    {{ form.submit(class=("gen-sub-btn")) }}
+                    <div>
+                        <input type="text" readonly value="{{ password }}" class="pass-input" id="myInput">
+                        <button class="copy-btn" onclick="myFunction()">დააკოპირე</button>
+                    </div>
             </div>
         </form>
+        <div class="pass-pic-div">
+            <img class="pass-pic" src="{{url_for('static', filename='pictures/password.svg')}}" alt="generate password">
+        </div>
     </div>
-    {{ password }}
 </div>
+<!-- js -->
+<script src="{{url_for('static', filename='generate.js')}}"></script>
 {% endblock content %}
