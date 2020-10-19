@@ -10,43 +10,43 @@
                 <div class="add-account-form-cont">
                     <h1 class="add-account-title">დაამატე ექაუნთი</h1>
                 <div class="add-account-form-div">   
-                    {% if form.account_username.errors %}
-                        {{ form.account_username(class="add-account-form-invalid", placeholder="ელ-ფოსტა") }}
-                            {% for error in form.account_username.errors %}
+                    {% if form.username.errors %}
+                        {{ form.username(class="add-account-form-invalid", placeholder="ელ-ფოსტა") }}
+                            {% for error in form.username.errors %}
                                 <span class="add-account-form-error">{{ error }}</span>
                             {% endfor %}
                     {% else %}
-                        {{ form.account_username(class="add-account-form", placeholder="მომხმარებლის სახელი") }}
+                        {{ form.username(class="add-account-form", placeholder="მომხმარებლის სახელი") }}
                     {% endif %}
                 </div>
                 <div class="add-account-form-div"> 
-                    {% if form.account_email.errors %}
-                        {{ form.account_email(class="add-account-form-invalid", placeholder="პაროლი") }}
-                            {% for error in form.account_email.errors %}
+                    {% if form.email.errors %}
+                        {{ form.email(class="add-account-form-invalid", placeholder="პაროლი") }}
+                            {% for error in form.email.errors %}
                                 <span class="add-account-form-error">{{ error }}</span>
                             {% endfor %}
                     {% else %}
-                        {{ form.account_email(class="add-account-form", placeholder="ელ-ფოსტა") }}
+                        {{ form.email(class="add-account-form", placeholder="ელ-ფოსტა") }}
                     {% endif %}
                 </div>
                 <div class="add-account-form-div"> 
-                    {% if form.account_password.errors %}
-                        {{ form.account_password(class="add-account-form-invalid", placeholder="პაროლი") }}
-                            {% for error in form.account_password.errors %}
+                    {% if form.password.errors %}
+                        {{ form.password(class="add-account-form-invalid", placeholder="პაროლი") }}
+                            {% for error in form.password.errors %}
                                 <span class="add-account-form-error">{{ error }}</span>
                             {% endfor %}
                     {% else %}
-                        {{ form.account_password(class="add-account-form", placeholder="პაროლი") }}
+                        {{ form.password(class="add-account-form", placeholder="პაროლი") }}
                     {% endif %}
                 </div>
                 <div class="add-account-form-div"> 
-                    {% if form.account_site.errors %}
-                        {{ form.account_site(class="add-account-form-invalid", placeholder="პაროლი") }}
-                            {% for error in form.account_site.errors %}
+                    {% if form.site.errors %}
+                        {{ form.site(class="add-account-form-invalid", placeholder="პაროლი") }}
+                            {% for error in form.site.errors %}
                                 <span class="add-account-form-error">{{ error }}</span>
                             {% endfor %}
                     {% else %}
-                        {{ form.account_site(class="add-account-form", placeholder="საიტი/აპლიკაცია") }}
+                        {{ form.site(class="add-account-form", placeholder="საიტი/აპლიკაცია") }}
                     {% endif %}
                     {{ form.submit(class=("add-acc-sub-btn")) }}      
                 </div>  
