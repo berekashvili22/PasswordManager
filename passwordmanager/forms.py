@@ -45,13 +45,13 @@ class LoginForm(FlaskForm):
 
 
 class AddAccount(FlaskForm):
-    account_username = StringField('მომხარებლის სახელი',
+    username = StringField('მომხარებლის სახელი',
                                 validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
-    account_email = StringField('ელ-ფოსტა',
+    email = StringField('ელ-ფოსტა',
                                 validators=[DataRequired(message='ველის შევსება სავალდებულოა'), Email()])
-    account_password = StringField('პაროლი',
+    password = StringField('პაროლი',
                                 validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
-    account_site = StringField('საიტის/აპლიკაციის სახელი',
+    site = StringField('საიტის/აპლიკაციის სახელი',
                                 validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
     submit = SubmitField('დამატება')
 
@@ -64,4 +64,22 @@ class AddAccount(FlaskForm):
 class GeneratePassword(FlaskForm):
     password_rng = IntegerField('ზომა')
     submit = SubmitField('დააგენერირე')
+
+
+class UpdateAccount(FlaskForm):
+    username = StringField('მომხარებლის სახელი',
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
+    email = StringField('ელ-ფოსტა',
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა'), Email()])
+    password = StringField('პაროლი',
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
+    site = StringField('საიტის/აპლიკაციის სახელი',
+                                validators=[DataRequired(message='ველის შევსება სავალდებულოა')])
+    submit = SubmitField('დამატება')
+
+    class Meta:
+            def render_field(self, field, render_kw):
+                render_kw.setdefault('required', False)
+                return super().render_field(field, render_kw)
+    
     
