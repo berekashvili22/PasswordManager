@@ -21,10 +21,10 @@ class User(db.Model, UserMixin):
 
 class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    account_username = db.Column(db.String(20))
-    account_email = db.Column(db.String(120))
-    account_password = db.Column(db.String(60), nullable=False)
-    account_site = db.Column(db.String(100), nullable=False)
+    username = db.Column(db.String(20))
+    email = db.Column(db.String(120))
+    password = db.Column(db.String(60), nullable=False)
+    site = db.Column(db.String(100), nullable=False)
     date_added = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
