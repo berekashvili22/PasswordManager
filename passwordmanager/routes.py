@@ -1,9 +1,9 @@
-from flask import render_template, url_for, flash, redirect
+from flask import render_template, url_for, flash, redirect, request, abort
 from passwordmanager import app, db, bcrypt
-from passwordmanager.forms import RegistrationForm, LoginForm, AddAccount, GeneratePassword
+from passwordmanager.forms import RegistrationForm, LoginForm, AddAccount, GeneratePassword, UpdateAccount
 from passwordmanager.models import User, Account
 from flask_login import login_user, current_user, logout_user, login_required
-import secrets
+import secrets, random
 
 
 
@@ -83,9 +83,9 @@ def generate_password():
 @app.route('/my_accounts', methods=['POST', 'GET'])
 @login_required
 def my_accounts():
-    
-   
-    return render_template('my_accounts.html')
+    hex_color = f'#{random.randint(0, 0xff_ff_ff):06x}' #generates rand hex color
+    accounts = Account.query.all()
+    return render_template('my_accounts.html', accounts=accounts, color=hex_color)
 
 
 @app.route('/add_account', methods=['POST', 'GET'])
@@ -94,10 +94,10 @@ def add_account():
     form = AddAccount()
     if form.validate_on_submit():
         account = Account(
-            account_username = form.account_username.data,
-            account_email = form.account_email.data,
-            account_password = form.account_password.data,
-            account_site = form.account_site.data,
+            username = form.username.data,
+            email = form.email.data,
+            password = form.password.data,
+            site = form.site.data,
             owner = current_user
         )
         db.session.add(account)
@@ -109,3 +109,34 @@ def add_account():
    
     return render_template('add_account.html', form=form)
 
+
+@app.route('/my_accounts/<int:account_id>')
+@login_required
+def account_show(account_id):
+    account = Account.query.get_or_404(account_id)
+    return render_template('account_show.html', account=account)
+
+
+@app.route('/my_accounts/<int:account_id>/update', methods=['GET', 'POST'])
+@login_required
+def account_update(account_id):
+    account = Account.query.get_or_404(account_id)
+    if account.owner != current_user:
+        about(403)
+    form = AddAccount()
+    if form.validate_on_submit():
+        account.username = form.username.data
+        account.email = form.email.data
+        account.password = form.password.data
+        account.site = form.site.data
+        db.session.commit() 
+        flash('ინფორმაცია წარმატებით განახლდა', 'flash-success')
+        return redirect(url_for('account_show', account_id=account.id))   
+
+    elif request.method == 'GET':
+        form.username.data = account.username
+        form.email.data = account.email
+        form.password.data = account.password
+        form.site.data = account.site
+
+    return render_template('add_account.html', form=form)
