@@ -1,3 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="accounts-cont">
+    <div class="accounts-p-cont">
+        <img class="modal-pic" src="{{url_for('static', filename='pictures/my_account.svg')}}" alt="">
+    </div>
+    <div class="accounts-info-cont">
+    {% for account in accounts %}
+    {% if account.owner == current_user %}
+        <div class="accounts-info">
+            <div class="">
+                <p class="acc-info-N">{{ account.site[0] }}</p>
+            </div>
+            <div class="acc-info-desc">
+                <a href="{{ url_for('account_show', account_id=account.id) }}" class="acc-info-title">{{ account.site }}</a>
+                <p class="acc-info-email">{{ account.email }}</p>
+                <p class="acc-info-date">{{ account.date_added.strftime('%Y-%m-%d') }}</p>
+            </div>  
+        </div>
+    {% endif %}
+    {% endfor %}
+    </div>
+</div>
 {% endblock %}
