@@ -125,13 +125,14 @@ body {
 
 .flash-success {
     display: flex;
-    background: rgba(70, 190, 54, 0.692);
+    background: rgb(70, 190, 54);
     height: 5vh;
     justify-content: center;
     align-items: center;
     font-size: 24px;
     font-weight: bold;
     width: 100%;
+    z-index: 2;
     letter-spacing: 2px;
     padding: 5px;
     position: absolute;
@@ -556,9 +557,6 @@ body {
 }
 
 
-
-
-
 .acc-nav-link-title {
     font-size: 24px;
     color: white;
@@ -570,91 +568,10 @@ body {
     outline: none;
 }
 
-/* .account-nav button, input {
-   border: none;
-    border-radius: 15px;
-    font-size: 30px;
-    text-align: center;
-    font-weight: bold;
-    color: white;
-    background: #27cc3d;
-    padding: 0 9px 0 9px;
-    cursor: pointer;
-    outline: none;
-} */
-
-
 
 .acc-nav-link-div a {
     color: white;
 }
-
-
-
-
-
-
-
-/* modal add account */
-
-/* .modal-bg {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 2;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s;
-}
-
-.modal-bg-active {
-    visibility: visible;
-    opacity: 1;
-}
-
-.modal {
-    border-radius: 25px;
-    background-color: white;
-    width: 90%;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    position: relative;
-  }
-
-.modal button {
-    padding: 10px;
-    background-color: tomato;
-    cursor: pointer; 
-}
-  
-.modal-close {
-    position: absolute;
-    top: 10px;
-    right: 14px;
-    font-size: 20px;
-    font-weight: 500;
-    cursor: pointer;
-}
-  
-.modal-close:hover {
-    color: red;
-} 
-
-.add-account-modal-cont {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    
-} */
 
 /* add account modal content */
 
@@ -707,11 +624,6 @@ body {
     height: 80vh;
 }
 
-.add-account-form-cont {
-    width: 90%;
-    height: 80%;
-    text-align: center;
-}
 
 .add-account-form-cont {
     display: flex;
@@ -900,6 +812,7 @@ body {
     padding: 15px 0px 15px 0px;
     align-self: center;
     cursor: pointer;
+    box-shadow: 0px 0.5px 5px rgba(0, 0, 0, 0.618);
 }
 
 .copy-btn:hover {
@@ -931,4 +844,122 @@ body {
     color: red;
 }
 
+/* my_accounts */
+.accounts-cont {
+    display: flex;
+}
 
+.accounts-p-cont {
+    display: flex;
+    width: 40%;
+    height: 93vh;
+    border-right: 2px solid #d4e0e0;
+    /* background: #96201c; */
+}
+.accounts-info-cont {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 93vh;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.accounts-info {
+    display: flex;
+    width: 80%;
+    height: 10%;
+    background-color: #fff;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 3%;
+    box-shadow: 0px 0.5px 5px rgba(0, 0, 0, 0.300);
+}
+
+.acc-info-desc {
+    display: flex;
+    flex-direction: column;
+}
+
+/* acc info */
+.acc-info-N {
+    width: 65px;
+    height: 65px;
+    line-height: 65px;
+    border-radius: 50%;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    background: #6c35ebb6;
+    text-transform: uppercase;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.acc-info-title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    margin-top: 10px;
+    color: #424242;
+    text-align: left;
+}
+
+.acc-info-email {
+    padding: 5px;
+    color: #a3acac;
+}
+
+.acc-info-date {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 14px;
+    color: #c3cbcb;
+
+}
+
+/* view account */
+
+
+.view-account-form-cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 60vh;
+    margin: auto;
+    margin-top: 10%;
+    background-color: #fff;
+    border-radius: 50px;
+    box-shadow: 0px 0.5px 5px rgba(0, 0, 0, 0.400);
+}
+
+
+.view-account-form-div {
+    width: 60%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.view-account-form {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 30px;
+    border: solid 2px #c3cbcb;
+    border-radius: 15px;
+    text-indent: 12px;
+    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+    outline: none;
+    margin-top: 10px;
+}
+
+.view-acc-label {
+    padding-left: 5px;
+    color: #3b3b3b;
+    font-weight: 600;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
