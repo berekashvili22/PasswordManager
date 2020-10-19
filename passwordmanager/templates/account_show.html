@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}  
+        <div class="view-account-form-cont">
+            <div class="view-account-form-div">
+                <label class="view-acc-label" for="">მომხარებლის სახელი</label>
+                <input  class="view-account-form" type="text" value="{{ account.username }}" readonly>    
+                <label class="view-acc-label" for="">ელ-ფოსტა</label>
+                <input  class="view-account-form" type="text" value="{{ account.email }}" readonly>    
+                <label class="view-acc-label" for="">პაროლი</label>
+                <input  class="view-account-form" type="text" value="{{ account.password }}" readonly>    
+                <label class="view-acc-label" for="">ვებსაიტი/აპლიკაცია</label>
+                <input  class="view-account-form" type="text" value="{{ account.site }}" readonly>     
+            </div>
+            <a href="#">განახლება</a>
+        </div>
+ {% endblock %}
