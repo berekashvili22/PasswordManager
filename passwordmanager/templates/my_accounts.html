@@ -9,7 +9,9 @@
     {% if account.owner == current_user %}
         <div class="accounts-info">
             <div class="">
-                <p class="acc-info-N">{{ account.site[0] }}</p>
+                <p class="acc-info-N">
+                {{ account.site[0] }}
+                </p>
             </div>
             <div class="acc-info-desc">
                 <a href="{{ url_for('account_show', account_id=account.id) }}" class="acc-info-title">{{ account.site }}</a>

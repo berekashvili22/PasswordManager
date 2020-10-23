@@ -41,7 +41,7 @@
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
                 {% for category, message in messages %}
-                    <div class="{{ category }}">
+                    <div class="{{ category }}" id="hideMe">
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -52,6 +52,5 @@
         {% endblock %}
     </div>
     <!-- js -->
-    <script src="{{url_for('static', filename='main.js')}}"></script>
 </body>
 </html>

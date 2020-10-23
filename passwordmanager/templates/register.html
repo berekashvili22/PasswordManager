@@ -5,10 +5,9 @@
         <img class="reg-pic" src="{{url_for('static', filename='pictures/register.svg')}}" alt="laptop pictures">
     </div>
     <div class="reg-cont">
-        <form method="POST" action="">
+        <form method="POST" action="" class="reg-form-cont">
             {{ form.hidden_tag() }}
-            <h1 class="reg-title">დარეგისტრირდი</h1>
-            <div class="reg-form-cont">
+            <h1 class="reg-title">რეგისტრაცია</h1>
             <div class="reg-form-div">
                 {% if form.first_name.errors %}
                     {{ form.first_name(class="reg-form-invalid", placeholder="სახელი") }}
@@ -60,7 +59,6 @@
                 {% endif %}
             </div>
             {{ form.submit(class=("reg-sub-btn")) }}
-            </div>
             <div class="reg-login-div">
                 <small class="text-muted">
                     უკვე დარეგისტრირდი ? <a class="reg-login" href="{{ url_for('login') }}">შესვლა</a>

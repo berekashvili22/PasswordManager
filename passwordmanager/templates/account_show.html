@@ -7,10 +7,12 @@
                 <label class="view-acc-label" for="">ელ-ფოსტა</label>
                 <input  class="view-account-form" type="text" value="{{ account.email }}" readonly>    
                 <label class="view-acc-label" for="">პაროლი</label>
-                <input  class="view-account-form" type="text" value="{{ account.password }}" readonly>    
+                <input  class="view-account-form" type="password" id="myInput" value="{{ account.password }}" readonly>
+                <div class="show-password"><input type="checkbox" onclick="myFunction()"></div>
                 <label class="view-acc-label" for="">ვებსაიტი/აპლიკაცია</label>
                 <input  class="view-account-form" type="text" value="{{ account.site }}" readonly>     
             </div>
-            <a href="#">განახლება</a>
+            <a href="{{ url_for('account_update', account_id=account.id) }}">განახლება</a>
         </div>
+        <script src="{{url_for('static', filename='account.js')}}"></script>
  {% endblock %}

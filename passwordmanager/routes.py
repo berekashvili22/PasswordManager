@@ -139,4 +139,4 @@ def account_update(account_id):
         form.password.data = account.password
         form.site.data = account.site
 
-    return render_template('add_account.html', form=form)
+    return render_template('account_update.html', form=form)

@@ -5,10 +5,9 @@
         <img class="login-pic" src="{{url_for('static', filename='pictures/login.svg')}}" alt="laptop pictures">
     </div>
     <div class="login-cont">
-        <form method="POST" action="">
+        <form method="POST" action="" class="login-form-cont">
             {{ form.hidden_tag() }}
             <h1 class="login-title">ავტორიზაცია</h1>
-            <div class="login-form-cont">
             <div class="login-form-div">
                 {% if form.email.errors %}
                     {{ form.email(class="login-form-invalid", placeholder="ელ-ფოსტა") }}
@@ -29,12 +28,11 @@
                     {{ form.password(class="login-form", placeholder="პაროლი") }}
                 {% endif %}
             </div>
-            <div>
+            <div class="log-remember">
                 {{ form.remember.label }}
-                {{ form.remember }}
+                {{ form.remember }}     
             </div>
             {{ form.submit(class=("login-sub-btn")) }}
-            </div>
             <div class="login-login-div">
                 <small class="text-muted">
                     არ გაქვს ექაუნთი ? <a class="login-login" href="{{ url_for('register') }}">დარეგისტრირდი</a>
