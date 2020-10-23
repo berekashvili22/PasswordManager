@@ -16,7 +16,7 @@ class RegistrationForm(FlaskForm):
                                 validators=[DataRequired(message='ველის შევსება სავალდებულოა'),])
     confirm_password = PasswordField('გაიმეორეთ პაროლი',
                                 validators=[DataRequired(message='ველის შევსება სავალდებულოა'), EqualTo('password', message='ველი უნდა ემთხვეოდეს თქვენს პაროლს')])
-    submit = SubmitField('რეგისტრაცია')
+    submit = SubmitField('დარეგისტრირდი')
 
     def validate_email(self, email):
             if User:
