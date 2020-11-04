@@ -7,7 +7,22 @@
             {{ form.hidden_tag() }}
             <div class="gen-form-cont">
                     <p class="gen-value">ზომა: <span id="demo"></span></p>
-                    {{ form.password_rng(type="range", min="6", max="124", value="62",class="slider", id="myRange") }}
+                    {{ form.password_rng(type="range", min="6", max="124", default="{{ length }}", class="slider", id="myRange") }}
+                    <div class="generate-options">
+                        <div>
+                            {{ form.symbols.label }}
+                            {{ form.symbols }}
+                        </div>
+                        <div>
+                            {{ form.numbers.label }}
+                            {{ form.numbers }}
+                        </div>
+                        <div>
+                            {{ form.uppercase.label }}
+                            {{ form.uppercase }}
+                        </div>                    
+                        
+                    </div>
                     {{ form.submit(class=("gen-sub-btn")) }}
                     <div>
                         <input type="text" readonly value="{{ password }}" class="pass-input" id="myInput">
@@ -15,6 +30,8 @@
                     </div>
             </div>
         </form>
+        <div>
+        </div>
         <div class="pass-pic-div">
             <img class="pass-pic" src="{{url_for('static', filename='pictures/password.svg')}}" alt="generate password">
         </div>
