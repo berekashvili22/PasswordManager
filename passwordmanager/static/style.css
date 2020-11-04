@@ -107,7 +107,7 @@ body {
     height: 2px;
 }
 
-/* errors */
+/* flash messages */
 
 .flash-info {
     display: flex;
@@ -119,13 +119,13 @@ body {
     font-weight: bold;
     width: 100%;
     letter-spacing: 2px;
-    padding: 5px;
     position: absolute;
+    top: 7%;
 }
 
 .flash-success {
     display: flex;
-    background: rgb(70, 190, 54);
+    background: rgba(70, 190, 1, 0.363);
     height: 5vh;
     justify-content: center;
     align-items: center;
@@ -134,8 +134,8 @@ body {
     width: 100%;
     z-index: 2;
     letter-spacing: 2px;
-    padding: 5px;
     position: absolute;
+    top: 7%;
 }
 
 .flash-fail {
@@ -147,14 +147,37 @@ body {
     font-size: 24px;
     font-weight: bold;
     width: 100%;
-    letter-spacing: 2px;
-    padding: 5px;
-    transition: 0.3ms;
+    /* letter-spacing: 2px; */
+    /* transition: 0.3ms; */
     position: absolute;
+    top: 7%;
 }
 
-.flash-dissapear {
-    display: none;
+/* removing flash messages */
+#hideMe {
+    -moz-animation: hideAnimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: hideAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: hideAnimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: hideAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes hideAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes hideAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
 }
 
 /* home page */
@@ -240,79 +263,87 @@ body {
 
 .reg-cont {
     display: flex;
-    width: 40%;
-    height: 75vh;
+    width: 35%;
+    height: 70vh;
     margin-top: 3%;
     justify-content: space-around;
     background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15);
-
+    border-radius: 30px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.300);
 }
 
 .reg-form-cont {
     display: flex;
-    padding: 20px;
     flex-direction: column;
-    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.reg-form-div {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    position: relative;
 }
 
 .reg-form-invalid {
-    width: 500px;
+    width: 85%;
     height: 50px;
-    margin-bottom: 10px;
-    border: solid 2px #d54949;
-    border-radius: 5px;
-    text-indent: 12px;
-    box-shadow: inset 0 1px 2px 0 rgba(247, 50, 50, 0.192);
+    border: solid 2px #d54949b2;
+    border-radius: 20px;
+    text-indent: 20px;
     outline: none;
-    margin-top: 5px;
+    margin: 5px 0px 25px 0px;
+    transition: 0.5s;
 }
 
 .reg-form-error {
     font-size: 12px;
-    color: #96201c;
+    font-weight: bold;
+    color: #f30c04;
     display: flex;
-    padding-left: 5px;
+    position: absolute;
+    letter-spacing: 0.6px;
+    bottom: 8%;
+    left: 10%;
+}
+
+.reg-form-invalid:focus {
+    border: solid 2px #cc2d2dd2;
 }
 
 .reg-form {
-    width: 500px;
+    width: 85%;
     height: 50px;
-    margin-bottom: 30px;
     border: solid 2px #c3cbcb;
-    border-radius: 5px;
-    text-indent: 12px;
+    border-radius: 20px;
+    text-indent: 20px;
     box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.15);
     outline: none;
-    margin-top: 5px;
+    margin: 5px 0px 25px 0px;
+    transition: 0.5s;
 }
 
 .reg-form:focus {
-    border: solid 2px rgb(91, 91, 255);
-    box-shadow: inset 0 1px 3px 0 rgba(95, 87, 255, 0.392);
-}
+    border: solid 2px rgb(125, 125, 243);
 
-.reg-form::placeholder{
-    font-size: 16px;
 }
 
 .reg-title {
     font-size: 34px;
-    font-weight: bolder;
     letter-spacing: 2px;
-    border-bottom: 1px solid #c3cbcb;
     padding-bottom: 10%;
     text-align: center;
-    margin-top: 30px;
 }
 
 .reg-sub-btn {
     background-color: #d32d27;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     padding: 10px;
-    width: 500px;
+    width: 60%;
     border: none;
     letter-spacing: 3px;
     border-radius: 30px;
@@ -323,6 +354,9 @@ body {
 
 .reg-sub-btn:hover{
     background-color: #96201c;
+}
+.text-muted {
+    padding-top: 5%;
 }
 
 .reg-login-div {
@@ -341,7 +375,7 @@ body {
 /* register pic */
 
 .reg-pic-cont {
-    width: 50%;
+    width: 55%;
     margin-right: 5%;
 }
 
@@ -362,56 +396,60 @@ body {
 
 .login-cont {
     display: flex;
-    width: 40%;
+    width: 35%;
     height: 75vh;
     margin-top: 7%;
-    justify-content: space-around;
-    /* background-color: #ffffff; */
-    /* box-shadow: 0 2px 4px 0 rgba(0,0,0,0.15); */
-
+    justify-content: space-around;  
 }
 
 .login-form-cont {
+    width: 100%;
     display: flex;
-    padding: 20px;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    margin: auto;
+}
+
+.login-form-div {
+    width: 100%;
+    position: relative;
 }
 
 .login-form-invalid {
-    width: 500px;
+    width: 100%;
     height: 50px;
-    margin-bottom: 10px;
-    border: solid 2px #d54949;
-    border-radius: 5px;
-    text-indent: 12px;
-    box-shadow: inset 0 1px 2px 0 rgba(247, 50, 50, 0.192);
+    border: solid 2px #d54949b2;
+    border-radius: 20px;
+    text-indent: 20px;
     outline: none;
-    margin-top: 5px;
+    margin: 5px 0px 25px 0px;
+    transition: 0.5s;
 }
 
 .login-form-error {
     font-size: 12px;
-    color: #96201c;
+    font-weight: bold;
+    color: #f30c04;
     display: flex;
-    padding-left: 5px;
+    position: absolute;
+    letter-spacing: 0.6px;
+    bottom: 8%;
+    left: 2%;
 }
 
 .login-form {
-    width: 500px;
+    width: 100%;
     height: 50px;
-    margin-bottom: 30px;
+    margin: 5px 0px 30px 0px;
     border: solid 2px #c3cbcb;
-    border-radius: 5px;
-    text-indent: 12px;
+    border-radius: 30px;
+    text-indent: 20px;
     box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.15);
     outline: none;
-    margin-top: 5px;
 }
 
 .login-form:focus {
-    border: solid 2px rgb(91, 91, 255);
-    box-shadow: inset 0 1px 3px 0 rgba(95, 87, 255, 0.392);
+    border: solid 2px rgb(125, 125, 243);
 
 }
 
@@ -423,18 +461,16 @@ body {
     font-size: 34px;
     font-weight: bolder;
     letter-spacing: 2px;
-    /* border-bottom: 1px solid #c3cbcb; */
-    padding-bottom: 10%;
+    padding-bottom: 7%;
     text-align: center;
-    margin-top: 30px;
 }
 
 .login-sub-btn {
     background-color: #d32d27;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     padding: 10px;
-    width: 500px;
+    width: 60%;
     border: none;
     letter-spacing: 3px;
     border-radius: 30px;
@@ -460,10 +496,17 @@ body {
     padding-left: 10px;
 }
 
+.log-remember {
+    padding: 3% 0% 0% 2%;
+    display: flex;
+    width: 100%;
+    
+}
+
 /* login pic */
 
 .login-pic-cont {
-    width: 40%;
+    width: 45%;
     margin-right: 5%;
 }
 
@@ -763,8 +806,23 @@ body {
     cursor: pointer;
   }
 
+
+.generate-options {
+    font-size: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5px;
+    color: #3b3b3b;
+}
+
+.generate-options div {
+    display: flex;
+    align-items: center;   
+}
+
 .gen-sub-btn {
-    background-color: #ff4949;
+    background-color: #df6f71;
     border: none;
     outline: none;
     color: white;
@@ -774,10 +832,11 @@ body {
     padding: 10px;
     border-radius: 30px;
     cursor: pointer;
+    margin-bottom: 3px;
 }
 
 .gen-sub-btn:hover {
-    background-color: #bd3636;
+    background-color: #d14444;
 }
 
 .gen-value {
@@ -806,9 +865,9 @@ body {
     width: 15%;
     font-size: 14px;
     color: #fff;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     border-radius: 15px;
-    height: 50px;
+    height: 49px;
     padding: 15px 0px 15px 0px;
     align-self: center;
     cursor: pointer;
@@ -895,6 +954,7 @@ body {
     text-transform: uppercase;
     margin-right: 10px;
     margin-left: 10px;
+    
 }
 
 .acc-info-title {
@@ -943,23 +1003,138 @@ body {
     background-color: #fff;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .view-account-form {
     width: 100%;
-    height: 50px;
+    height: 40px;
     margin-bottom: 30px;
-    border: solid 2px #c3cbcb;
-    border-radius: 15px;
-    text-indent: 12px;
-    box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid #b3b3b3;
+    text-indent: 25px;
     outline: none;
     margin-top: 10px;
 }
 
 .view-acc-label {
+    font-size: 16px;
     padding-left: 5px;
     color: #3b3b3b;
-    font-weight: 600;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+}
+
+
+
+#myInput {
+    position: relative;
+}
+
+.show-password {
+    display: flex;
+    position: absolute;
+    font-size: 14px;
+    align-items: center;
+    margin-bottom: 5px;
+    bottom: 35%;
+    right: 0%;
+}
+
+.show-update-account-div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.show-update-account-btn {
+    background-color: #d14444;
+    width: 30%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    outline: none;
+    cursor: pointer;
+}
+
+#profile-icon{
+    position: absolute;
+    top: 7%;
+    left: 1%;
+}
+
+#email-icon{
+    position: absolute;
+    top: 33%;
+    left: 1%;
+}
+
+#pass-icon{
+    position: absolute;
+    top: 57%;
+    left: 1%;
+}
+
+#web-icon {
+    position: absolute;
+    top: 82%;
+    left: 1%;
+}
+
+/* update */
+
+.update-account-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+}
+.update-account-btn {
+    background-color: #d14444;
+    border: none;
+    width: 50%;
+    height: 40px;
+    border-radius: 30px;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    outline: none;
+    cursor: pointer;
+}
+
+.update-account-title-div {
+    font-size: 24px;
+    margin-bottom: 5%;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    color: #3b3b3b;
+}
+
+#profile-icon-update{
+    position: absolute;
+    top: 5%;
+    left: 1%;
+}
+
+#email-icon-update{
+    position: absolute;
+    top: 26%;
+    left: 1%;
+}
+
+#pass-icon-update{
+    position: absolute;
+    top: 46%;
+    left: 1%;
+}
+
+#web-icon-update {
+    position: absolute;
+    top: 66%;
+    left: 1%;
 }
