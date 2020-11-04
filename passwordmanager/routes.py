@@ -3,7 +3,7 @@ from passwordmanager import app, db, bcrypt
 from passwordmanager.forms import RegistrationForm, LoginForm, AddAccount, GeneratePassword, UpdateAccount
 from passwordmanager.models import User, Account
 from flask_login import login_user, current_user, logout_user, login_required
-import secrets, random
+import secrets, random, string
 
 
 
@@ -74,10 +74,37 @@ def account():
 @login_required
 def generate_password():
     form = GeneratePassword()
+    default_length = form.password_rng.data
 
-    password = secrets.token_urlsafe(form.password_rng.data)
+    # password options
+    LOWER_LETTERS = string.ascii_lowercase
+    UPPER_LETTERS = string.ascii_uppercase
+    NUMBERS = string.digits
+    SYMBOLS = string.punctuation
+    LENGHT = form.password_rng.data 
+    K = LENGHT if LENGHT is not None else 0
 
-    return render_template('generate.html', password=password, form=form)
+    # password user option 
+    wantSymbols = form.symbols.data
+    wantNumbers = form.numbers.data
+    wantUpper = form.uppercase.data
+
+    PASSWORD_CHARACTERS = LOWER_LETTERS
+
+    PASSWORD_CHARACTERS += SYMBOLS if wantSymbols is not False else ''
+    PASSWORD_CHARACTERS += NUMBERS if wantNumbers is not False else ''
+    PASSWORD_CHARACTERS += UPPER_LETTERS if wantUpper is not False else ''
+
+
+    # convert PASSWORD_CHARACTERS from string to shuffled list
+    PASSWORD_CHARACTERS = list(PASSWORD_CHARACTERS)
+    random.shuffle(PASSWORD_CHARACTERS)
+
+    #generate password
+    random_password = random.choices(PASSWORD_CHARACTERS, k=K)
+    random_password = ''.join(random_password)
+
+    return render_template('generate.html', password=random_password, form=form, length=K)
 
 
 @app.route('/my_accounts', methods=['POST', 'GET'])
