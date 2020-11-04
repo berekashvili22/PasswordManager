@@ -63,6 +63,9 @@ class AddAccount(FlaskForm):
 
 class GeneratePassword(FlaskForm):
     password_rng = IntegerField('ზომა')
+    symbols = BooleanField('სიმბოლოები(@#$%..)')
+    numbers = BooleanField('ციფრები(123456..)')
+    uppercase = BooleanField('დიდი ასოები(ABCDE..)')
     submit = SubmitField('დააგენერირე')
 
 
