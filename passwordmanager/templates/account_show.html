@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}  
         <div class="view-account-form-cont">
+            <div class="del-acc-div">
+                <a href="{{ url_for('account_delete', account_id=account.id) }}" class="del-acc">წაშლა</a>
+            </div>
             <div class="update-account-title-div">
                 <h2>ექაუნთის ინფორმაცია</h2>
             </div>
