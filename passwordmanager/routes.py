@@ -167,3 +167,15 @@ def account_update(account_id):
         form.site.data = account.site
 
     return render_template('account_update.html', form=form)
+
+@app.route('/my_accounts/<int:account_id>/delete', methods=['GET', 'POST'])
+@login_required
+def account_delete(account_id):
+    account = Account.query.get_or_404(account_id)
+
+    if account.owner != current_user:
+        abort(403)
+    db.session.delete(account)
+    db.session.commit()
+
+    return redirect(url_for('my_accounts'))
