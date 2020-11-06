@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, request, abort
 from passwordmanager import app, db, bcrypt
-from passwordmanager.forms import RegistrationForm, LoginForm, AddAccount, GeneratePassword, UpdateAccount
+from passwordmanager.forms import RegistrationForm, LoginForm, AddAccount, GeneratePassword, UpdateAccount, UpdateProfile
 from passwordmanager.models import User, Account
 from flask_login import login_user, current_user, logout_user, login_required
 import secrets, random, string
@@ -70,6 +70,29 @@ def account():
     return render_template('account.html')
 
 
+@app.route('/account/<int:user_id>/update', methods=['GET', 'POST'])
+@login_required
+def user_update(user_id):
+    user = User.query.get_or_404(user_id)
+    if user != current_user:
+        about(403)
+    form = UpdateProfile()
+    if form.validate_on_submit():
+        user.first_name = form.first_name.data
+        user.last_name = form.last_name.data
+        user.email = form.email.data
+        db.session.commit() 
+        flash('ინფორმაცია წარმატებით განახლდა', 'flash-success')
+        return redirect(url_for('account'))   
+
+    elif request.method == 'GET':
+        form.first_name.data = user.first_name
+        form.last_name.data = user.last_name
+        form.email.data = user.email
+
+    return render_template('profile_update.html', form=form)
+
+
 @app.route('/generate_password', methods=['POST', 'GET'])
 @login_required
 def generate_password():
@@ -94,7 +117,6 @@ def generate_password():
     PASSWORD_CHARACTERS += SYMBOLS if wantSymbols is not False else ''
     PASSWORD_CHARACTERS += NUMBERS if wantNumbers is not False else ''
     PASSWORD_CHARACTERS += UPPER_LETTERS if wantUpper is not False else ''
-
 
     # convert PASSWORD_CHARACTERS from string to shuffled list
     PASSWORD_CHARACTERS = list(PASSWORD_CHARACTERS)
@@ -172,10 +194,9 @@ def account_update(account_id):
 @login_required
 def account_delete(account_id):
     account = Account.query.get_or_404(account_id)
-
     if account.owner != current_user:
         abort(403)
     db.session.delete(account)
     db.session.commit()
-
+    flash('ექაუნთი წაიშალა ბაზიდან', 'flash-fail')
     return redirect(url_for('my_accounts'))
