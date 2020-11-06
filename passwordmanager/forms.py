@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm
+from flask_login import current_user
 from wtforms import StringField, PasswordField, IntegerField, BooleanField, SubmitField, DateField, validators, ValidationError
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 from passwordmanager.models import User
-
 
 
 class RegistrationForm(FlaskForm):
@@ -85,4 +85,28 @@ class UpdateAccount(FlaskForm):
                 render_kw.setdefault('required', False)
                 return super().render_field(field, render_kw)
     
+
+
+class UpdateProfile(FlaskForm):
+    first_name = StringField('სახელი',
+         validators=[DataRequired(message='ველის შევსება სავალდებულოა'), Length(min=2, max=20)])
+    last_name = StringField('გვარი',
+         validators=[DataRequired(message='ველის შევსება სავალდებულოა'), Length(min=4, max=20)])
+    email = StringField('ელ. ფოსტა',
+         validators=[DataRequired(message='ველის შევსება სავალდებულოა'), Email(message='ელ-ფოსტა არასწორია')])
+    submit = SubmitField('განახლება')
     
+    def validate_first_name(self, first_name):
+         if first_name.data != current_user.first_name:
+               pass     
+                            
+    def validate_email(self, email):
+         if email.data != current_user.email:
+               user = User.query.filter_by(email=email.data).first()       
+               if user:
+                    raise ValidationError('მსგავსი ელ. ფოსტა უკვე გამოყენებულია')
+
+    class Meta:
+        def render_field(self, field, render_kw):
+            render_kw.setdefault('required', False)
+            return super().render_field(field, render_kw)  
