@@ -6,26 +6,27 @@
                 <img class="account-pic1" src="{{url_for('static', filename='pictures/account1.svg')}}" alt="">
             </div>   
             <div class="user-info-cont"> 
-                <p class="user-name">{{ current_user.first_name }} {{ current_user.last_name }}</p>
+                <div class="user-name-div"> 
+                    <p class="user-name">{{ current_user.first_name }} {{ current_user.last_name }}</p>
+                </div>
                 <a href="/my_accounts" class="my-accounts">ჩემი ექაუნთები</a>
+                <a href="{{ url_for('user_update', user_id=current_user.id) }}" class="account-settings">
+                    <svg width="2em" height="2em" viewBox="0 0 18 18" class="bi bi-sliders" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                      </svg>
+                </a>
             </div>
         </div>
-
-
-            <div class="account-nav">
-                <div class="acc-nav-link-div">
-                    <a href="/generate_password" class="acc-nav-link-title">დააგენერირე პაროლი</a>
-                    
-                </div>
-                <div class="acc-nav-link-div">
-                    <a href="/add_account" class="acc-nav-link-title">დაამატე ექაუნთი</a>
-                </div>
+        <div class="account-nav">
+            <div class="acc-nav-link-div">
+                <a href="/generate_password" class="acc-nav-link-title">დააგენერირე პაროლი</a>
                 
             </div>
-        </div>      
-        <!-- modal add -->
-        <!-- end modal -->
-
+            <div class="acc-nav-link-div">
+                <a href="/add_account" class="acc-nav-link-title">დაამატე ექაუნთი</a>
+            </div>
+            
+        </div>
     </div>
     <!-- js -->
     <script src="{{url_for('static', filename='account.js')}}"></script>
