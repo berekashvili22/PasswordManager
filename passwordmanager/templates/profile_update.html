@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="reg-cont-wrap">
+    <div class="reg-pic-cont">
+        <img class="reg-pic" src="{{url_for('static', filename='pictures/register.svg')}}" alt="laptop pictures">
+    </div>
+    <div class="reg-cont">
+        <form method="POST" action="" class="reg-form-cont">
+            {{ form.hidden_tag() }}
+            <h1 class="reg-title">ინფორმაცია</h1>
+            <div class="reg-form-div">
+                {% if form.first_name.errors %}
+                    {{ form.first_name(class="reg-form-invalid", placeholder="სახელი") }}
+                        {% for error in form.first_name.errors %}
+                            <span class="reg-form-error">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.first_name(class="reg-form", placeholder="სახელი") }}
+                {% endif %}
+            </div>
+            <div class="reg-form-div">
+                {% if form.last_name.errors %}
+                    {{ form.last_name(class="reg-form-invalid", placeholder="გვარი") }}
+                        {% for error in form.last_name.errors %}
+                            <span class="reg-form-error">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.last_name(class="reg-form", placeholder="გვარი") }}
+                {% endif %}
+            </div>
+            <div class="reg-form-div">
+                {% if form.email.errors %}
+                    {{ form.email(class="reg-form-invalid", placeholder="ელ-ფოსტა") }}
+                        {% for error in form.email.errors %}
+                            <span class="reg-form-error">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.email(class="reg-form", placeholder="ელ-ფოსტა") }}
+                {% endif %}
+            </div>
+            {{ form.submit(class=("reg-sub-btn"), value='დამახსოვრება') }}
+            <div class="reg-login-div">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
