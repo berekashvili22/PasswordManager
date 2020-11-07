@@ -1,5 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
+    {% if current_user.is_authenticated %}
+    <div class="home-auth-cont">
+    <div class="home-auth-title-div">
+        <h2 class="home-auth-title">
+            მოგესალმებით <span class="home-auth-current-name">{{ current_user.first_name }}</span>
+        </h2>
+    </div>
+    <div class="home-auth-nav-div">
+        <ul class="home-auth-nav">
+            <li><a href="{{ url_for('generate_password') }}">დააგენერირეთ პაროლი</a></li>
+        </ul>
+        <ul class="home-auth-nav">
+            <li><a href="{{ url_for('add_account') }}">დაამატეთ ექაუნთი</a></li>
+        </ul>
+        <ul class="home-auth-nav">
+            <li><a href="{{ url_for('my_accounts') }}">აკონტროლეთ ექაუნთები</a></li>
+        </ul>
+    </div>
+    <div class="home-auth-div">
+        <img class="home-auth-pic" src="{{url_for('static', filename='pictures/home_auth.svg')}}" alt="laptop pictures">
+    </div>
+    </div>
+    {% else %}
     <div class="home-cont">   
         <div class="home-pic-text">
             <h1>უსაფრთხო <span style="color: #f33535;">პაროლის</span> მენეჯერი</h1>
@@ -13,5 +36,6 @@
             <img class="home-pic-3" src="{{url_for('static', filename='pictures/home3.svg')}}" alt="laptop pictures">
         </div>
     </div>
+    {% endif %}
     
 {% endblock %}
