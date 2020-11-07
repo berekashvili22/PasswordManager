@@ -1,20 +1,17 @@
+import os
+import secrets, random, string
 from flask import render_template, url_for, flash, redirect, request, abort
-from passwordmanager import app, db, bcrypt
-from passwordmanager.forms import RegistrationForm, LoginForm, AddAccount, GeneratePassword, UpdateAccount, UpdateProfile
+from passwordmanager import app, db, bcrypt, mail
+from passwordmanager.forms import (RegistrationForm, LoginForm, AddAccount, GeneratePassword,
+                                   UpdateAccount, UpdateProfile, RequestResetform, ResetPassworForm)
 from passwordmanager.models import User, Account
 from flask_login import login_user, current_user, logout_user, login_required
-import secrets, random, string
-
-
+from flask_mail import Message
 
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('home.html')
-
-@app.route('/about')
-def about():
-    return 'about_page'
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -132,8 +129,10 @@ def generate_password():
 @app.route('/my_accounts', methods=['POST', 'GET'])
 @login_required
 def my_accounts():
-    hex_color = f'#{random.randint(0, 0xff_ff_ff):06x}' #generates rand hex color
-    accounts = Account.query.all()
+    hex_color = '#fafa33'
+    # pagination
+    page = request.args.get('page', 1, type=int)
+    accounts = Account.query.filter_by(owner = current_user).paginate(page=page, per_page=6) 
     return render_template('my_accounts.html', accounts=accounts, color=hex_color)
 
 
@@ -200,3 +199,64 @@ def account_delete(account_id):
     db.session.commit()
     flash('ექაუნთი წაიშალა ბაზიდან', 'flash-fail')
     return redirect(url_for('my_accounts'))
+
+# send token to email
+def send_reset_email(user):
+    token = user.get_reset_token()
+    msg = Message('Password Reset Reqeust',
+                   sender='tornike berekashvili',
+                   recipients=[user.email])
+    msg.body = f''' გადადით ლინკზე პაროლის აღსადგენად :
+{url_for('reset_token', token=token, _external=True)}
+'''
+    mail.send(msg)
+
+
+# send reset password token
+@app.route("/reset_password", methods=['GET', 'POST'])
+def reset_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = RequestResetform()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email=form.email.data).first()
+        send_reset_email(user)
+        flash('ლინკი წარმატებით გაიგზავნა, შეამოწმეთ თქვენი ელ. ფოსტა', 'flash-success')
+        return redirect(url_for('login'))
+
+    return render_template('reset_request.html', form=form)
+
+# reset password
+@app.route("/reset_password/<token>", methods=['GET', 'POST'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    user = User.verify_reset_token(token)
+    if user is None:
+        flash('ლინკის მოქმედების დრო ამოიწურა, გთხოვთ ცადოთ თავიდან', 'flash-fail')
+        return redirect(url_for('reset_request'))
+
+    form = ResetPassworForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.password = hashed_password
+        db.session.commit()
+        flash(f'პაროლი წარმატებით შეიცვალა !', 'flash-success')
+        return redirect(url_for('login'))
+
+    return render_template('reset_password.html', form=form)
+
+
+
+
+
+
+
+
+@app.route('/about')
+def about():
+    return render_template('about_us.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact_us.html')
