@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="login-cont-wrap">
+    <div class="login-pic-cont">
+        <img class="login-pic" src="{{url_for('static', filename='pictures/login.svg')}}" alt="laptop pictures">
+    </div>
+    <div class="login-cont">
+        <form method="POST" action="" class="login-form-cont">
+            {{ form.hidden_tag() }}
+            <h1 class="login-title">პაროლის აღდგენა</h1>
+            <div class="login-form-div">
+                {% if form.email.errors %}
+                    {{ form.email(class="login-form-invalid", placeholder="ელ-ფოსტა") }}
+                        {% for error in form.email.errors %}
+                            <span class="login-form-error">{{ error }}</span>
+                        {% endfor %}
+                {% else %}
+                    {{ form.email(class="login-form", placeholder="ელ-ფოსტა") }}
+                {% endif %}
+            </div>
+            {{ form.submit(class=("login-sub-btn")) }}
+        </form>
+    </div>
+</div>
+{% endblock %}
