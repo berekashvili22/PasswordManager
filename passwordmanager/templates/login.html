@@ -33,6 +33,11 @@
                 {{ form.remember }}     
             </div>
             {{ form.submit(class=("login-sub-btn")) }}
+            <small class="text-muted">
+                <div class="password-reset-div">
+                    დაგავიწყდა პაროლი ? <a class="password-reset" href="{{ url_for('register') }}">პაროლის აღდგენა</a>
+                </div>
+            </small>
             <div class="login-login-div">
                 <small class="text-muted">
                     არ გაქვს ექაუნთი ? <a class="login-login" href="{{ url_for('register') }}">დარეგისტრირდი</a>
