@@ -19,14 +19,14 @@
             </div>
             <ul class="nav-ul">
                 <li class="li-l"><a href="{{ url_for('home') }}">მთავარი</a></li>
-                <li class="li-l"><a href="#">ჩვენს შესახებ</a></li>
-                <li class="li-l"><a href="#">კონტაქტი</a></li>
+                <li class="li-l"><a href="{{ url_for('about') }}">ჩვენს შესახებ</a></li>
+                <li class="li-l"><a href="{{ url_for('contact') }}">კონტაქტი</a></li>
                 {% if current_user.is_authenticated %}
                     <li class="li-l"><a href="{{ url_for('account') }}" style="text-transform: capitalize;">{{ current_user.first_name }}</a></li>
                     <li class="li-logout"><a href="{{ url_for('logout') }}">გამოსვლა</a></li>
                 {% else %}
                     <li class="li-l"><a href="{{ url_for('login') }}">შესვლა</a></li>
-                    <li class="li-r"><a href="{{ url_for('register') }}">შემოგვიერთდი</a></li>
+                    <li class="li-r"><a href="{{ url_for('register') }}" id="nav-join-us">შემოგვიერთდი</a></li>
                 {% endif %}   
             </ul>
             <div class="navbar-burger">
