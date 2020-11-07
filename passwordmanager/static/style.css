@@ -26,14 +26,19 @@ body {
     font-weight: bold;
 }
 
+.navbar a:hover {
+    color: #ff6584;
+    transition: 0.2s;
+}
+
 .logo {
     width: 10%;
     color: black;
     font-size: 30px;
     font-weight: bolder;
     margin-left: 15px;
-    letter-spacing: 3px;
-  
+    letter-spacing: 3px;  
+    cursor: pointer;
 }
 
 .nav-ul {
@@ -61,7 +66,6 @@ body {
     font-weight: bold;
     color: white;
     letter-spacing: 2px;
-
 }
 
 .li-logout {
@@ -81,6 +85,10 @@ body {
 .li-logout a {
     color: white;
     letter-spacing: 2px;
+}
+
+#nav-join-us:hover {
+    color: #fff;
 }
 
 /* navbar burger */
@@ -120,6 +128,7 @@ body {
     width: 100%;
     letter-spacing: 2px;
     position: absolute;
+    z-index: 2;
     top: 7%;
 }
 
@@ -147,6 +156,7 @@ body {
     font-size: 24px;
     font-weight: bold;
     width: 100%;
+    z-index: 2;
     /* letter-spacing: 2px; */
     /* transition: 0.3ms; */
     position: absolute;
@@ -190,10 +200,7 @@ body {
     bottom: 0;
     left: 0;
     max-width: 100%;
-    
 }
-
-
 
 .home-pic-3-cont {
     margin-top: 5%;
@@ -223,8 +230,7 @@ body {
     margin-bottom: 50px;
     font-weight: bold;
     text-align: center;
-    padding: 10px;
-    
+    padding: 10px;   
 }
 
 .home-pic-text p {
@@ -239,7 +245,7 @@ body {
     background-color: #d22d27;
     display: flex;
     justify-content: center;
-    width: 70%;
+    width: 90%;
     font-size: 32px;
     letter-spacing: 1px;
     padding: 12px;
@@ -251,8 +257,84 @@ body {
     background-color: #ad2723;
 }
 
-/* register */
+/* home page authorized */
+.home-atuh-cont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
 
+.home-auth-div {
+    width: 70%;
+    position: absolute;
+    bottom: 10%;
+    left: 2%;
+}
+
+.home-auth-pic {
+    max-width: 100%;
+}
+
+.home-auth-title-div{
+    display: flex;
+    width: 100%;
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0%;
+    background-color: #3f3d56;
+    letter-spacing: 1px;
+}
+.home-auth-title {
+    font-weight: bold;
+    font-size: 3.5rem;
+    color: #ff6584;
+    color: #ffffff;
+}
+
+.home-auth-current-name {
+    color: #ff6584;
+    text-transform: capitalize;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.home-auth-nav-div {
+    position: absolute;
+    right: 5%;
+    top: 55%;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #f2f2f2;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.115);
+    
+}
+
+.home-auth-nav {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: #ff6584;
+}
+
+.home-auth-nav li{
+    padding-bottom: 10%;
+    list-style: inside;
+    cursor: pointer;
+}
+
+.home-auth-nav a {
+    color: #3f3d56;
+    transition: 0.2s;
+
+}
+
+
+.home-auth-nav a:hover {
+    color: #ff6584;
+}
+
+
+
+/* register */
 .reg-cont-wrap {
     display: flex;
     justify-content: space-evenly;
@@ -485,9 +567,11 @@ body {
 
 .login-login-div {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     font-size: 14px;
-    margin-top: 70px;
+    position: absolute;
+    bottom: 5%;
     color: #9ea7a7;
 }
 
@@ -499,8 +583,16 @@ body {
 .log-remember {
     padding: 3% 0% 0% 2%;
     display: flex;
-    width: 100%;
-    
+    width: 100%;   
+}
+
+.password-reset-div {
+    font-size: 14px;
+    color: #9ea7a7;
+}
+
+.password-reset  {
+    color: #333333;
 }
 
 /* login pic */
@@ -520,7 +612,7 @@ body {
 .account-wrap {
     width: 100%;
     height: 93vh;
-    background-image: linear-gradient(to bottom right, #f9fbfd 50%, #d32d27 50%);
+    background-image: linear-gradient(to bottom right, #f9fbfd 50%, #3f3d56 50%);
     display: flex;
     flex-direction: column;
 }
@@ -541,20 +633,37 @@ body {
     letter-spacing: 1px;
     text-transform: uppercase;
     background-color: #ffffff;
+    background-color: #3f3d56;
     border-radius: 20px;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.250);
+    position: relative;
+}
+
+.user-name-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .user-name {
-    font-size: 32px;
+    font-size: 26px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 2px;
     font-weight: bold;
-    color: #3b3b3b;
+    color: #fff;
+}
+
+.account-settings {
+    position: absolute;
+    top: 17%;
+    right: 3%;
+    color: #fff;
 }
 
 .my-accounts {
-    color: #2c69ed;
     font-weight: bold;
+    color: #fff;
 }
 
 .user-pic {
@@ -571,10 +680,14 @@ body {
     max-width: 100%;
 }
 
+/* update profile */
+#update-profile {
+    padding-top: 5%;
+}
+
 /* account navigation */
 
 .account-nav {
-    /* background: wheat; */
     display: flex;
     justify-content: space-between;
     width: 700px;
@@ -584,14 +697,15 @@ body {
 }
 
 .acc-nav-link-div {
-    /* background: white; */
     width: 48%;
     justify-content: space-evenly;
     display: flex;
     box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.250);
-    padding: 10px;
+    padding: 15px;
     align-items: center;
     border-radius: 10px;
+    background-color: #3f3d56;
+    color: #ff6584;
 }
 
 .acc-nav-link-div:hover {
@@ -602,7 +716,6 @@ body {
 
 .acc-nav-link-title {
     font-size: 24px;
-    color: white;
 }
 
 .acc-nav-btn {
@@ -614,7 +727,16 @@ body {
 
 .acc-nav-link-div a {
     color: white;
+    font-weight: bold;
 }
+
+.acc-nav-link-div a:hover {
+    color: #ff6584;
+    transition: 0.2s;
+}
+
+
+
 
 /* add account modal content */
 
@@ -676,6 +798,7 @@ body {
     width: 100%;
     height: 100%;
     margin: auto;
+    position: relative;
     /* background-color: #2c69ed */
 }
 
@@ -1063,6 +1186,16 @@ body {
     cursor: pointer;
 }
 
+.del-acc-div {
+    position: absolute;
+    top: 22%;
+    right: 27%;
+}
+
+.del-acc {
+    color: #d22d27;
+}
+
 #profile-icon{
     position: absolute;
     top: 7%;
@@ -1092,7 +1225,7 @@ body {
 .update-account-div {
     display: flex;
     justify-content: center;
-    padding-top: 10%;
+    /* padding-top: 10%; */
 }
 .update-account-btn {
     background-color: #d14444;
@@ -1117,24 +1250,134 @@ body {
 
 #profile-icon-update{
     position: absolute;
-    top: 5%;
+    top: 6%;
     left: 1%;
 }
 
 #email-icon-update{
     position: absolute;
-    top: 26%;
+    top: 28%;
     left: 1%;
 }
 
 #pass-icon-update{
     position: absolute;
-    top: 46%;
+    top: 51%;
     left: 1%;
 }
 
 #web-icon-update {
     position: absolute;
-    top: 66%;
+    top: 73%;
     left: 1%;
+}
+
+
+/* about_us */
+
+.about-us-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.about-us-header-div {
+    background-color: #3f3d56;
+    height: 40vh;
+    font-size: 4rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.about-title {
+    font-size: 5rem;
+}
+
+.about-us-text-div {
+    padding-top: 2%;
+    width: 70%;
+    display: flex;
+    margin: auto;
+    text-align: center;
+}
+
+.about-us-text {
+    font-size: 2rem;
+}
+
+/* contact us */
+
+.contact-us-cont {
+    background-color: #3f3d56;
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-us-div-cont {
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15%;
+}
+.contact-us-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact-us-icons {
+    color: white;
+    margin-bottom: 10%;
+    /* background-color: teal; */
+}
+
+.contact-us-div p {
+    color: #ffffff;
+    font-size: 1.5rem;
+    padding-bottom: 10%;
+}
+
+.contact-us-title {
+    color: #fff;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    font-weight: bold;
+    position: absolute;
+    top: 10%;
+}
+
+/* pagination */
+
+/* pagination */
+
+.pages_cont {
+display: flex;
+justify-content: center;
+position: absolute;
+bottom: 5%;
+right: 30%;
+}
+
+.pages_cont a {
+margin: 2px;
+border: 1px solid black;
+border-radius: 3px;
+padding: 7px;
+color: black;
+}
+
+.pages_cont p {
+margin-top: 8px;
+}
+
+.pages_cont a:hover {
+background: #6b63ffc5;
+}
+
+.page_selected {
+background: #6b63ffc5;
 }
