@@ -9,13 +9,13 @@
     <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename='style.css') }}">
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
+    <meta>
 </head>
 <body>
     <div>
         <nav class="navbar">
             <div class="logo">
-                <h4>პარ<span style="color: red;">2</span>ლი</h4>
+                <a href="{{ url_for('home') }}">პარ<span style="color: red;">2</span>ლი</a>
             </div>
             <ul class="nav-ul">
                 <li class="li-l"><a href="{{ url_for('home') }}">მთავარი</a></li>
@@ -35,9 +35,6 @@
                 <div class="line3"></div>
             </div>
         </nav>
-        <!-- <div class="flash-fail">
-            <p>raga rafafsa fassf asf</p>
-        </div> -->
         {% with messages = get_flashed_messages(with_categories=True) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -52,5 +49,6 @@
         {% endblock %}
     </div>
     <!-- js -->
+    <script src="{{url_for('static', filename='navbar.js')}}"></script>
 </body>
 </html>
