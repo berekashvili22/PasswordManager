@@ -7,6 +7,9 @@
             მოგესალმებით <span class="home-auth-current-name">{{ current_user.first_name }}</span>
         </h2>
     </div>
+    <div class="home-auth-pic-div">
+        <img class="home-auth-pic" src="{{url_for('static', filename='pictures/home-auth.svg')}}" alt="laptop pictures">
+    </div>
     <div class="home-auth-nav-div">
         <ul class="home-auth-nav">
             <li><a href="{{ url_for('generate_password') }}">დააგენერირეთ პაროლი</a></li>
@@ -18,23 +21,22 @@
             <li><a href="{{ url_for('my_accounts') }}">აკონტროლეთ ექაუნთები</a></li>
         </ul>
     </div>
-    <div class="home-auth-div">
-        <img class="home-auth-pic" src="{{url_for('static', filename='pictures/home_auth.svg')}}" alt="laptop pictures">
-    </div>
     </div>
     {% else %}
     <div class="home-cont">   
-        <div class="home-pic-text">
-            <h1>უსაფრთხო <span style="color: #f33535;">პაროლის</span> მენეჯერი</h1>
-            <p>შექმენი მაქსიმალურად დაცული პაროლი და აკონტროლეთ ის ჩვენი მეშვეობით</p>
-            <a href="{{ url_for('register') }}">შემოგვიერთდი დღესვე</a>
-            <div class="home-pic-4-cont">
-                <img class="home-pic-4" src="{{url_for('static', filename='pictures/home4.svg')}}" alt="laptop pictures">
+        <div class="home-pic-text-div">
+            <div class="home-main-title-div">
+                <h1 class="home-main-title" >უსაფრთხო <span style="color: #f33535;">პაროლის</span> მენეჯერი</h1>
+                <p>შექმენი მაქსიმალურად დაცული პაროლი და აკონტროლეთ ის ჩვენი მეშვეობით</p>
+            </div>
+            <div class="home-join-us-div">
+                <a class="home-join-us-link" href="{{ url_for('register') }}">შემოგვიერთდი დღესვე</a>
             </div>
         </div>
-        <div class="home-pic-3-cont"> 
-            <img class="home-pic-3" src="{{url_for('static', filename='pictures/home3.svg')}}" alt="laptop pictures">
-        </div>
+    </div>
+    <div>
+    <div class="home-pic-cont">
+        <img class="home-pic" src="{{url_for('static', filename='pictures/home-main.svg')}}" alt="generate password">
     </div>
     {% endif %}
     
