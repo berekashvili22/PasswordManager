@@ -26,12 +26,20 @@ body {
     font-weight: bold;
 }
 
-.navbar a:hover {
+.navbar li a:hover {
     color: #ff6584;
     transition: 0.2s;
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 7vh;
+    padding-bottom: 4px;
+}
+
+.logo a {
     width: 10%;
     color: black;
     font-size: 30px;
@@ -94,6 +102,8 @@ body {
 /* navbar burger */
 
 .navbar-burger {
+    margin-right: 3%;
+    cursor: pointer;
     display: none;
 }
 
@@ -107,13 +117,16 @@ body {
     height: 2px;
 }
 .line2 {
-    width: 20px;
+    width: 25px;
     height: 2px;
 }
 .line3 {
-    width: 17px;
+    width: 25px;
     height: 2px;
 }
+
+/* nav active */
+
 
 /* flash messages */
 
@@ -191,40 +204,48 @@ body {
 }
 
 /* home page */
-.home-pic-4-cont {
-    width: 50%;
-}
-
-.home-pic-4 {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    max-width: 100%;
-}
-
-.home-pic-3-cont {
-    margin-top: 5%;
-    width: 40%;
-}
-
-.home-pic-3 {
-    max-width: 100%;
-}
 
 .home-cont {
-  display: flex;
-  justify-content: space-evenly;
-  height: 93vh;
+    display: flex;
+    justify-content: center;
+    height: 50vh;
+    background-color: #3f3d56;
+  }
+
+.home-pic-cont {
+    display: flex;
+    justify-content: center;
+    height: 42vh;
+    margin: auto;
+}
+
+.home-pic {
+    margin-top: 10px;
+    max-width: 100%;
 }
 
 
-.home-pic-text {
+.home-pic-text-div {
     margin-top: 50px;
+    background-color: #3f3d56;
     color: #3b3b3b;
-    width: 40%;
+    color: #ffffff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-.home-pic-text h1 {
+.home-join-us-div {
+    width: 600px;
+}
+
+.home-main-title-div {
+    width: 70%;
+}
+
+.home-main-title {
     font-size: 50px;
     letter-spacing: 2px;
     margin-bottom: 50px;
@@ -233,14 +254,14 @@ body {
     padding: 10px;   
 }
 
-.home-pic-text p {
+.home-pic-text-div p {
     text-align: center;
     font-size: 18px;
     letter-spacing: 1px;
     margin-bottom: 80px;
 }
 
-.home-pic-text a {
+.home-join-us-link {
     color: white;
     background-color: #d22d27;
     display: flex;
@@ -253,22 +274,27 @@ body {
     margin: auto;
 }
 
-.home-pic-text a:hover {
+.home-pic-text-div a:hover {
     background-color: #ad2723;
 }
 
+
+
 /* home page authorized */
-.home-atuh-cont {
+.home-auth-cont {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
-.home-auth-div {
-    width: 70%;
-    position: absolute;
-    bottom: 10%;
-    left: 2%;
+.home-auth-pic-div {
+    margin-top: 10px;
+    height: 50vh;
+    width: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    
 }
 
 .home-auth-pic {
@@ -278,7 +304,7 @@ body {
 .home-auth-title-div{
     display: flex;
     width: 100%;
-    height: 20vh;
+    height: 30vh;
     justify-content: center;
     align-items: center;
     border-radius: 0%;
@@ -298,15 +324,19 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+/* navauth */
+
 .home-auth-nav-div {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
     position: absolute;
-    right: 5%;
-    top: 55%;
+    align-items: flex-start;
+    right: 3%;
+    top: 46%;
     padding: 50px;
     border-radius: 20px;
-    background-color: #f2f2f2;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.115);
-    
+    background-color: #3f3d56;
 }
 
 .home-auth-nav {
@@ -323,6 +353,7 @@ body {
 
 .home-auth-nav a {
     color: #3f3d56;
+    color: #ffffff;
     transition: 0.2s;
 
 }
@@ -332,7 +363,7 @@ body {
     color: #ff6584;
 }
 
-
+/* navauth end */
 
 /* register */
 .reg-cont-wrap {
@@ -1283,17 +1314,19 @@ body {
 .about-us-header-div {
     background-color: #3f3d56;
     height: 40vh;
-    font-size: 4rem;
+    font-size: 3rem;
     color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-weight: bold;
+    padding-bottom: 3%;
 }
 
 .about-title {
-    font-size: 5rem;
+    font-size: 4rem;
+    margin-bottom: 2%;
 }
 
 .about-us-text-div {
@@ -1321,7 +1354,7 @@ body {
     width: 70%;
     display: flex;
     justify-content: space-around;
-    margin-top: 15%;
+    margin-top: 25%;
 }
 .contact-us-div {
     display: flex;
@@ -1347,7 +1380,7 @@ body {
     letter-spacing: 2px;
     font-weight: bold;
     position: absolute;
-    top: 10%;
+    top: 20%;
 }
 
 /* pagination */
@@ -1380,4 +1413,134 @@ background: #6b63ffc5;
 
 .page_selected {
 background: #6b63ffc5;
+}
+
+
+/* responsive */
+
+@media screen and (max-width:1280px) {
+    /* home unauthed  */
+    .home-join-us-div {
+        font-size: 24px;
+    }
+
+    .home-main-title-div {
+        width: 100%;
+    }
+
+    .home-join-us-link {
+        width: 100%;
+        font-size: 24px;
+    }
+
+    .home-join-us-div {
+        width: 500px;
+    }
+}
+
+
+@media screen and (max-width:1000px) {
+  /* navbar */
+  .nav-ul {
+      width: 600px;
+  }
+  .navbar li a{
+      font-size: 16px;
+  }
+
+  .li-r {
+      margin-left: 15px;
+  }
+  /* home unauthed */
+  .home-main-title {
+      font-size: 47px;
+  }
+
+}
+
+@media screen and (max-width:768px) {
+    /* navbar */
+
+    body {
+        overflow-x: hidden;
+    }
+    .nav-ul {
+       position: absolute; 
+       right: 0px;
+       height: 70vh;
+       top: 7vh;
+       background-color: #fff;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       width: 100%;
+       z-index: 1;
+       transform: translateX(100%);
+       transition: transform 0.5s ease-in;
+    }
+
+    .nav-ul li {
+        opacity: 0;
+    }
+
+    .navbar-burger{
+        display: block;
+    }
+
+    /* home unauthed */
+    .home-main-title {
+        font-size: 42px;
+    }
+
+    .home-join-us-div {
+        font-size: 24px;
+    }
+
+    .home-join-us-link {
+        width: 100%;
+        font-size: 24px;
+    }
+    .home-join-us-div {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width:480px) {
+       /* home unauthed */
+    .home-cont {
+        height: 70vh;
+    }
+    .home-main-title {
+        font-size: 32px;
+    }
+    .home-pic-text-div p {
+        text-align: center;
+        font-size: 16px;
+        letter-spacing: 1px;
+        margin-bottom: 50px;
+    }
+    .home-join-us-link {
+        font-size: 16px;
+    }
+    .home-join-us-div {
+        width: 250px;
+    }
+    
+
+}
+
+/* responsive navbar animation */
+.nav-active {
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
 }
