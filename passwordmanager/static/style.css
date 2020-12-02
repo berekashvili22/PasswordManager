@@ -1104,7 +1104,8 @@ body {
     font-size: 50px;
     color: #fff;
     text-align: center;
-    background: #6c35ebb6;
+    background: #3f3d56;
+    background: tomato;
     text-transform: uppercase;
     margin-right: 10px;
     margin-left: 10px;
@@ -1398,9 +1399,9 @@ right: 30%;
 .pages_cont a {
 margin: 2px;
 border: 1px solid black;
+color: rgb(172, 125, 125);
 border-radius: 3px;
 padding: 7px;
-color: black;
 }
 
 .pages_cont p {
@@ -1408,12 +1409,13 @@ margin-top: 8px;
 }
 
 .pages_cont a:hover {
-background: #6b63ffc5;
+background: #3f3d56;
 }
 
 .page_selected {
-background: #6b63ffc5;
+background: #3f3d56;
 }
+
 
 
 /* responsive */

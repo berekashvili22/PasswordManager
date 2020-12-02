@@ -2,38 +2,39 @@
 {% block content %}
 <div class="accounts-cont">
     <div class="accounts-p-cont">
-        <img class="modal-pic" src="{{url_for('static', filename='pictures/my_account.svg')}}" alt="">
+        <img class="modal-pic" src="{{url_for('static', filename='pictures/my_account1.svg')}}" alt="">
     </div>
     <div class="accounts-info-cont">
-    {% for account in accounts.items %} 
+        {% for account in accounts.items %}
         <div class="accounts-info">
             <div class="">
                 <p class="acc-info-N">
-                {{ account.site[0] }}
+                    {{ account.site[0] }}
                 </p>
             </div>
             <div class="acc-info-desc">
-                <a href="{{ url_for('account_show', account_id=account.id) }}" class="acc-info-title">{{ account.site }}</a>
+                <a href="{{ url_for('account_show', account_id=account.id) }}"
+                    class="acc-info-title">{{ account.site }}</a>
                 <p class="acc-info-email">{{ account.email }}</p>
                 <p class="acc-info-date">{{ account.date_added.strftime('%Y-%m-%d') }}</p>
-            </div>  
+            </div>
         </div>
         {% endfor %}
     </div>
     <!-- pagination -->
     <div class="pages_cont">
-    {% for page_num in accounts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-    {% if page_num %}
-        {% if accounts.page == page_num %}    
-            <a class="page_selected" href="{{ url_for('my_accounts', page=page_num) }}">{{ page_num }}</a>  
+        {% for page_num in accounts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+        {% if accounts.page == page_num %}
+        <a class="page_selected" href="{{ url_for('my_accounts', page=page_num) }}">{{ page_num }}</a>
         {% else %}
-            <a class="page" href="{{ url_for('my_accounts', page=page_num) }}">{{ page_num }}</a>
+        <a class="page" href="{{ url_for('my_accounts', page=page_num) }}">{{ page_num }}</a>
         {% endif %}
-    {% else %}
+        {% else %}
         <p>...</p>
-    {% endif %}
-    {% endfor %}
+        {% endif %}
+        {% endfor %}
     </div>
-    
+
 </div>
 {% endblock %}
